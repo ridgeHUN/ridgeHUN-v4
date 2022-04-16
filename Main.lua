@@ -79,24 +79,6 @@ Parvus.Config = Parvus.Utilities.Config:ReadJSON(Parvus.Current, {
 				Filled = false
 			}
 		},
-		Miscellanous = {
-			UnlimitedAmmo = false,
-			SilentAim = {
-				Enabled = false,
-				WallCheck = false,
-				DynamicFoV = false,
-				HitChance = 100,
-				FieldOfView = 50,
-				Priority = {"Head"},
-				Circle = {
-					Visible = true,
-					Transparency = 0.5,
-					Color = {0.6666666865348816,1,1,0.5,false},
-					Thickness = 1,
-					NumSides = 100,
-					Filled = false
-				}
-			},
 			Aimbot = {
 				Enabled = false,
 				WallCheck = false,
