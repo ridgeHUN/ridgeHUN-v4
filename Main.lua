@@ -410,7 +410,7 @@ local Window = Parvus.Utilities.UI:Window({Name = "ridgeHUN v4.0 — " .. Parvus
 				end})
 
 				local GunModsSection = MiscTab:Section({Name = "Gun Modifications",Side = "Left"}) do
-					MiscSection:Button({Name = "Unlimited Ammo",Side = "Left",Callback = function()
+					GunModsSection:Button({Name = "Unlimited Ammo",Side = "Left",Callback = function()
 						local Player = game:GetService("Players").LocalPlayer
 						local mag = require(game:GetService("ReplicatedStorage").Modules.Gun).get(Player.Character:FindFirstChildOfClass("Tool"));
 
@@ -421,7 +421,7 @@ local Window = Parvus.Utilities.UI:Window({Name = "ridgeHUN v4.0 — " .. Parvus
 
 
 			local VehicleModsSection = MiscTab:Section({Name = "Vehicle Modifications",Side = "Right"}) do
-				MiscSection:Button({Name = "Vehicle Acceleration",Side = "Left",Callback = function()
+				VehicleModsSection:Button({Name = "Vehicle Acceleration",Side = "Left",Callback = function()
 					for i, v in pairs(workspace.CarStorage:GetChildren()) do
 						v.Cosmetics.Essentials.SpeedScalar.Value = 9999999999999999999999999999999
 					end
