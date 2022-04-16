@@ -79,55 +79,55 @@ Parvus.Config = Parvus.Utilities.Config:ReadJSON(Parvus.Current, {
 				Filled = false
 			}
 		},
-			Aimbot = {
+		Aimbot = {
+			Enabled = false,
+			WallCheck = false,
+			DynamicFoV = false,
+			Sensitivity = 0.25,
+			FieldOfView = 100,
+			Priority = {"Head","HumanoidRootPart"},
+			Prediction = {
 				Enabled = false,
-				WallCheck = false,
-				DynamicFoV = false,
-				Sensitivity = 0.25,
-				FieldOfView = 100,
-				Priority = {"Head","HumanoidRootPart"},
-				Prediction = {
-					Enabled = false,
-					Velocity = 2000,
-				},
-				Circle = {
-					Visible = true,
-					Transparency = 0.5,
-					Color = {1,1,1,0.5,false},
-					Thickness = 1,
-					NumSides = 100,
-					Filled = false
-				}
+				Velocity = 2000,
+			},
+			Circle = {
+				Visible = true,
+				Transparency = 0.5,
+				Color = {1,1,1,0.5,false},
+				Thickness = 1,
+				NumSides = 100,
+				Filled = false
 			}
-		},
-		UI = {
-			Enabled = true,
-			Keybind = "RightShift",
-			Color = {0.8333333134651184,0.5,0.5,0,false},
-			TileSize = 74,
-			Watermark = true,
-			Background = "Floral",
-			BackgroundId = "rbxassetid://5553946656",
-			BackgroundColor = {1,0,0,0,false},
-			BackgroundTransparency = 0,
-			Cursor = {
-				Enabled = false,
-				Length = 16,
-				Width = 11,
-
-				Crosshair = {
-					Enabled = false,
-					Color = {1,1,1,0,false},
-					Size = 4,
-					Gap = 2,
-				}
-			}
-		},
-		Binds = {
-			Aimbot = "MouseButton2",
-			SilentAim = "NONE"
 		}
-	})
+	},
+	UI = {
+		Enabled = true,
+		Keybind = "RightShift",
+		Color = {0.8333333134651184,0.5,0.5,0,false},
+		TileSize = 74,
+		Watermark = true,
+		Background = "Floral",
+		BackgroundId = "rbxassetid://5553946656",
+		BackgroundColor = {1,0,0,0,false},
+		BackgroundTransparency = 0,
+		Cursor = {
+			Enabled = false,
+			Length = 16,
+			Width = 11,
+
+			Crosshair = {
+				Enabled = false,
+				Color = {1,1,1,0,false},
+				Size = 4,
+				Gap = 2,
+			}
+		}
+	},
+	Binds = {
+		Aimbot = "MouseButton2",
+		SilentAim = "NONE"
+	}
+})
 
 local GetFPS = Parvus.Utilities.SetupFPS()
 Parvus.Utilities.Drawing:Cursor(Parvus.Config.UI.Cursor)
@@ -408,7 +408,7 @@ local Window = Parvus.Utilities.UI:Window({Name = "ridgeHUN v4.0 — " .. Parvus
 				MiscSection:Button({Name = "Fling",Side = "Left",Callback = function()
 					local a="Torso"if game.Players.LocalPlayer.Character:FindFirstChild("UpperTorso")then a="UpperTorso"end;if game.Players.LocalPlayer.Character:FindFirstChild("Torso")then a="Torso"end;local b=game.Players.LocalPlayer.Character;local c=Instance.new("Model",workspace)local d=Instance.new("Part",c)d.Name="Torso"d.CanCollide=false;d.Anchored=true;local e=Instance.new("Part",c)e.Name="Head"e.Anchored=true;e.CanCollide=false;local f=Instance.new("Humanoid",c)f.Name="Humanoid"d.Position=Vector3.new(0,9999,0)e.Position=Vector3.new(0,9991,0)game.Players.LocalPlayer.Character=c;wait(5)game.Players.LocalPlayer.Character=b;wait(6)local g=game.Players.LocalPlayer.Character.Humanoid:Clone()wait()game.Players.LocalPlayer.Character[a]:Destroy()game.Players.LocalPlayer.Character.HumanoidRootPart:Destroy()game.Players.LocalPlayer.Character.LeftHand.Anchored=true;game.Players.LocalPlayer.Character.LeftLowerArm.Anchored=true;game.Players.LocalPlayer.Character.LeftUpperArm.Anchored=true;game.Players.LocalPlayer.Character.RightHand.Anchored=true;game.Players.LocalPlayer.Character.RightLowerArm.Anchored=true;game.Players.LocalPlayer.Character.RightUpperArm.Anchored=true;if game.Players.LocalPlayer.Character:FindFirstChild("UpperTorso")~=nil then game.Players.LocalPlayer.Character:FindFirstChild("UpperTorso").Anchored=true end;game.Players.LocalPlayer.Character.LeftLowerLeg.Anchored=true;game.Players.LocalPlayer.Character.LeftUpperLeg.Anchored=true;game.Players.LocalPlayer.Character.RightFoot.Anchored=true;game.Players.LocalPlayer.Character.RightLowerLeg.Anchored=true;game.Players.LocalPlayer.Character.RightUpperLeg.Anchored=true;game.Players.LocalPlayer.Character.LowerTorso.Anchored=true;game.Players.LocalPlayer.Character.LeftHand.Anchored=true;game.Players.LocalPlayer.Character.LeftHand.Anchored=true;local h=Instance.new("BodyThrust")h.Parent=game.Players.LocalPlayer.Character.Head;h.Force=Vector3.new(0,9999999,0)h.Location=game.Players.LocalPlayer.Character.Head.Position;local i=game.Players.LocalPlayer.Character.Head;game.Players.LocalPlayer.Character.Humanoid.Parent=game.Lighting;game:GetService("RunService").Stepped:connect(function()i.CanCollide=false end)g.Parent=game.Players.LocalPlayer.Character;local j=Instance.new("Humanoid",game.Players.LocalPlayer.Character)j.HipHeight=2;j.RigType=Enum.HumanoidRigType.R15;j.WalkSpeed=50;local k=game.Players.LocalPlayer:GetMouse()local l=i;local m=workspace.CurrentCamera;m.CameraType=Enum.CameraType.Follow;m.CameraSubject=l;local n=game.Players.LocalPlayer;local o=true;local p=true;local q={f=0,b=0,l=0,r=0}local r={f=0,b=0,l=0,r=0}local s=4000;local t=0;function Fly()local u=Instance.new("BodyGyro",i)u.P=9e4;u.maxTorque=Vector3.new(9e9,9e9,9e9)u.cframe=i.CFrame;local v=Instance.new("BodyVelocity",i)v.velocity=Vector3.new(0,0,0)v.maxForce=Vector3.new(9e9,9e9,9e9)repeat wait()if q.l+q.r~=0 or q.f+q.b~=0 then t=t+.5+t/s;if t>s then t=s end elseif not(q.l+q.r~=0 or q.f+q.b~=0)and t~=0 then t=t-1;if t<0 then t=0 end end;if q.l+q.r~=0 or q.f+q.b~=0 then v.velocity=(game.Workspace.CurrentCamera.CoordinateFrame.lookVector*(q.f+q.b)+game.Workspace.CurrentCamera.CoordinateFrame*CFrame.new(q.l+q.r,(q.f+q.b)*.2,0).p-game.Workspace.CurrentCamera.CoordinateFrame.p)*t;r={f=q.f,b=q.b,l=q.l,r=q.r}elseif q.l+q.r==0 and q.f+q.b==0 and t~=0 then v.velocity=(game.Workspace.CurrentCamera.CoordinateFrame.lookVector*(r.f+r.b)+game.Workspace.CurrentCamera.CoordinateFrame*CFrame.new(r.l+r.r,(r.f+r.b)*.2,0).p-game.Workspace.CurrentCamera.CoordinateFrame.p)*t else v.velocity=Vector3.new(0,0.1,0)end;u.cframe=game.Workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(-math.rad((q.f+q.b)*50*t/s),0,0)until not o;q={f=0,b=0,l=0,r=0}r={f=0,b=0,l=0,r=0}t=0;u:Destroy()v:Destroy()end;k.KeyDown:connect(function(w)if w:lower()=="w"then q.f=1 elseif w:lower()=="s"then q.b=-1 elseif w:lower()=="a"then q.l=-1 elseif w:lower()=="d"then q.r=1 end end)k.KeyUp:connect(function(w)if w:lower()=="w"then q.f=0 elseif w:lower()=="s"then q.b=0 elseif w:lower()=="a"then q.l=0 elseif w:lower()=="d"then q.r=0 end end)Fly()i.Name="HumanoidRootPart"k.KeyDown:connect(function(x)if x:lower()=="z"then i.Velocity=Vector3.new(0,1919191,0)end end)
 				end})
-				
+
 				local GunModsSection = MiscTab:Section({Name = "Gun Modifications",Side = "Left"}) do
 					MiscSection:Button({Name = "Unlimited Ammo",Side = "Left",Callback = function()
 						local Player = game:GetService("Players").LocalPlayer
@@ -417,224 +417,229 @@ local Window = Parvus.Utilities.UI:Window({Name = "ridgeHUN v4.0 — " .. Parvus
 						--mag.Clip = mag.Clip + 300
 						mag.MagazineBullets = mag.MagazineBullets + 999
 					end})
-				end
-			end
-			
+
+
+
 			local VehicleModsSection = MiscTab:Section({Name = "Vehicle Modifications",Side = "Right"}) do
 				MiscSection:Button({Name = "Vehicle Acceleration",Side = "Left",Callback = function()
 					for i, v in pairs(workspace.CarStorage:GetChildren()) do
 						v.Cosmetics.Essentials.SpeedScalar.Value = 9999999999999999999999999999999
 					end
-				end})
+						end})
+					end
+				end
 			end
-				
+		end
+		
 
-				SettingsTab:Button({Name = "Rejoin",Side = "Left",Callback = function()
-					if #PlayerService:GetPlayers() <= 1 then
-						LocalPlayer:Kick("\nRejoining...")
-						task.wait()
-						game:GetService("TeleportService"):Teleport(game.PlaceId, LocalPlayer)
-					else
-						game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, LocalPlayer)
+
+			SettingsTab:Button({Name = "Rejoin",Side = "Left",Callback = function()
+				if #PlayerService:GetPlayers() <= 1 then
+					LocalPlayer:Kick("\nRejoining...")
+					task.wait()
+					game:GetService("TeleportService"):Teleport(game.PlaceId, LocalPlayer)
+				else
+					game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, LocalPlayer)
+				end
+			end})
+			SettingsTab:Button({Name = "Server Hop",Side = "Left",Callback = function()
+				local Servers = {}
+				local Request = game:HttpGetAsync("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100")
+				local DataDecoded = HttpService:JSONDecode(Request).data
+				for Index,ServerData in ipairs(DataDecoded) do
+					if type(ServerData) == "table" and ServerData.id ~= game.JobId then
+						table.insert(Servers,ServerData.id)
 					end
-				end})
-				SettingsTab:Button({Name = "Server Hop",Side = "Left",Callback = function()
-					local Servers = {}
-					local Request = game:HttpGetAsync("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100")
-					local DataDecoded = HttpService:JSONDecode(Request).data
-					for Index,ServerData in ipairs(DataDecoded) do
-						if type(ServerData) == "table" and ServerData.id ~= game.JobId then
-							table.insert(Servers,ServerData.id)
-						end
-					end
-					if #Servers > 0 then
-						game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, Servers[math.random(1, #Servers)])
-					else
-						Parvus.Utilities.UI:Notification({
-							Title = "ridgeHUN v4.0",
-							Description = "Couldn't find a server",
-							Duration = 5
-						})
-					end
-				end})
-				SettingsTab:Button({Name = "Join Discord Server",Side = "Left",Callback = function()
-					local Request = (syn and syn.request) or request
-					Request({
-						["Url"] = "http://localhost:6463/rpc?v=1",
-						["Method"] = "POST",
-						["Headers"] = {
-							["Content-Type"] = "application/json",
-							["Origin"] = "https://discord.com"
-						},
-						["Body"] = HttpService:JSONEncode({
-							["cmd"] = "INVITE_BROWSER",
-							["nonce"] = string.lower(HttpService:GenerateGUID(false)),
-							["args"] = {
-								["code"] = "sYqDpbPYb7"
-							}
-						})
+				end
+				if #Servers > 0 then
+					game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, Servers[math.random(1, #Servers)])
+				else
+					Parvus.Utilities.UI:Notification({
+						Title = "ridgeHUN v4.0",
+						Description = "Couldn't find a server",
+						Duration = 5
 					})
-				end}):ToolTip("Join for support, updates and more!")
-				local BackgroundSection = SettingsTab:Section({Name = "Background",Side = "Right"}) do
-					BackgroundSection:Dropdown({Name = "Image",Default = {Parvus.Config.UI.Background},List = {
-						{Name = "Legacy",Mode = "Button",Callback = function()
-							Window.Background.Image = "rbxassetid://2151741365"
-							Parvus.Config.UI.BackgroundId = "rbxassetid://2151741365"
-						end},
-						{Name = "Hearts",Mode = "Button",Callback = function()
-							Window.Background.Image = "rbxassetid://6073763717"
-							Parvus.Config.UI.BackgroundId = "rbxassetid://6073763717"
-						end},
-						{Name = "Abstract",Mode = "Button",Callback = function()
-							Window.Background.Image = "rbxassetid://6073743871"
-							Parvus.Config.UI.BackgroundId = "rbxassetid://6073743871"
-						end},
-						{Name = "Hexagon",Mode = "Button",Callback = function()
-							Window.Background.Image = "rbxassetid://6073628839"
-							Parvus.Config.UI.BackgroundId = "rbxassetid://6073628839"
-						end},
-						{Name = "Circles",Mode = "Button",Callback = function()
-							Window.Background.Image = "rbxassetid://6071579801"
-							Parvus.Config.UI.BackgroundId = "rbxassetid://6071579801"
-						end},
-						{Name = "Lace With Flowers",Mode = "Button",Callback = function()
-							Window.Background.Image = "rbxassetid://6071575925"
-							Parvus.Config.UI.BackgroundId = "rbxassetid://6071575925"
-						end},
-						{Name = "Floral",Mode = "Button",Callback = function()
-							Window.Background.Image = "rbxassetid://5553946656"
-							Parvus.Config.UI.BackgroundId = "rbxassetid://5553946656"
-						end}
-					}})
-					Window.Background.Image = Parvus.Config.UI.BackgroundId
-					Window.Background.ImageTransparency = Parvus.Config.UI.BackgroundColor[4]
-					Window.Background.TileSize = UDim2.new(0,Parvus.Config.UI.TileSize,0,Parvus.Config.UI.TileSize)
-					Window.Background.ImageColor3 = Parvus.Utilities.Config:TableToColor(Parvus.Config.UI.BackgroundColor)
-					BackgroundSection:Textbox({Name = "Custom Image",Text = "",Placeholder = "ImageId",Callback = function(String)
-						Window.Background.Image = "rbxassetid://" .. String
-						Parvus.Config.UI.BackgroundId = "rbxassetid://" .. String
-					end})
-					BackgroundSection:Colorpicker({Name = "Color",HSVAR = Parvus.Config.UI.BackgroundColor,Callback = function(HSVAR,Color)
-						Parvus.Config.UI.BackgroundColor = HSVAR
-						Window.Background.ImageColor3 = Color
-						Window.Background.ImageTransparency = HSVAR[4]
-					end})
-					BackgroundSection:Slider({Name = "Tile Offset",Min = 74, Max = 296,Value = Window.Background.TileSize.X.Offset,Callback = function(Number)
-						Parvus.Config.UI.TileSize = Number
-						Window.Background.TileSize = UDim2.new(0,Number,0,Number)
-					end})
 				end
-				local CreditsSection = SettingsTab:Section({Name = "Credits",Side = "Right"}) do
-					CreditsSection:Label({Text = "ridgeHUN v4.0 | re-written"})
-					CreditsSection:Divider()
-					CreditsSection:Label({Text = "i hate jetpack"})
-				end
-			end
-		end
-
-		local function TeamCheck(Player)
-			if Parvus.Config.AimAssist.TeamCheck then
-				return LocalPlayer.Team ~= Player.Team
-			end
-			return true
-		end
-
-		local function WallCheck(Enabled,Hitbox,Character)
-			if not Enabled then return true end
-			local Camera = Workspace.CurrentCamera
-			return not Camera:GetPartsObscuringTarget({Hitbox.Position},{
-				LocalPlayer.Character,
-				Character
-			})[1]
-		end
-
-		local function GetHitbox(Config)
-			if not Config.Enabled then return end
-			local Camera = Workspace.CurrentCamera
-			local FieldOfView = Config.FieldOfView
-			local ClosestHitbox = nil
-
-			for Index, Player in pairs(PlayerService:GetPlayers()) do
-				local Character = Player.Character
-				local Humanoid = Character and Character:FindFirstChildOfClass("Humanoid")
-				local IsAlive = Humanoid and Humanoid.Health > 0
-				if Player ~= LocalPlayer and IsAlive and TeamCheck(Player) then
-					for Index, HumanoidPart in pairs(Config.Priority) do
-						local Hitbox = Character and Character:FindFirstChild(HumanoidPart)
-						if Hitbox then
-							local ScreenPosition, OnScreen = Camera:WorldToViewportPoint(Hitbox.Position)
-							local Magnitude = (Vector2.new(ScreenPosition.X, ScreenPosition.Y) - UserInputService:GetMouseLocation()).Magnitude
-							FieldOfView = Config.DynamicFoV and (120 - Workspace.CurrentCamera.FieldOfView) * 4 or FieldOfView
-							if OnScreen and Magnitude < FieldOfView and WallCheck(Config.WallCheck,Hitbox,Character) then
-								FieldOfView = Magnitude
-								ClosestHitbox = Hitbox
-							end
-						end
-					end
-				end
-			end
-
-			return ClosestHitbox
-		end
-
-		local function AimAt(Hitbox,Config)
-			if not Hitbox then return end
-			local Camera = Workspace.CurrentCamera
-			local Mouse = UserInputService:GetMouseLocation()
-
-			local HitboxDistance = (Hitbox.Position - Camera.CFrame.Position).Magnitude
-			local HitboxVelocityCorrection = (Hitbox.AssemblyLinearVelocity * HitboxDistance) / Config.Prediction.Velocity
-
-			local HitboxOnScreen = Camera:WorldToViewportPoint(Config.Prediction.Enabled
-				and Hitbox.Position + HitboxVelocityCorrection or Hitbox.Position)
-			mousemoverel(
-				(HitboxOnScreen.X - Mouse.X) * Config.Sensitivity,
-				(HitboxOnScreen.Y - Mouse.Y) * Config.Sensitivity
-			)
-		end
-
-		local __namecall
-		__namecall = hookmetamethod(game, "__namecall", function(self, ...)
-			local args = {...}
-			if Parvus.Config.AimAssist.SilentAim.Enabled and SilentAim then
-				local Camera = Workspace.CurrentCamera
-				local HitChance = math.random(0,100) <= Parvus.Config.AimAssist.SilentAim.HitChance
-				if getnamecallmethod() == "Raycast" and HitChance then
-					args[2] = SilentAim.Position - Camera.CFrame.Position
-				elseif getnamecallmethod() == "FindPartOnRayWithIgnoreList" and HitChance then
-					args[1] = Ray.new(args[1].Origin,SilentAim.Position - Camera.CFrame.Position)
-				end
-			end
-			return __namecall(self, unpack(args))
-		end)
-
-		RunService.Heartbeat:Connect(function()
-			SilentAim = GetHitbox(Parvus.Config.AimAssist.SilentAim)
-			if Aimbot then AimAt(
-				GetHitbox(Parvus.Config.AimAssist.Aimbot),
-				Parvus.Config.AimAssist.Aimbot)
-			end
-
-			if Parvus.Config.UI.Watermark then
-				Parvus.Utilities.UI:Watermark({
-					Enabled = true,
-					Title = string.format(
-						"ridgeHUN v4.0 — %s\nTime: %s - %s\nFPS: %i/s\nPing: %i ms",
-						Parvus.Current,os.date("%X"),os.date("%x"),GetFPS(),math.round(Stats.PerformanceStats.Ping:GetValue())
-					)
+			end})
+			SettingsTab:Button({Name = "Join Discord Server",Side = "Left",Callback = function()
+				local Request = (syn and syn.request) or request
+				Request({
+					["Url"] = "http://localhost:6463/rpc?v=1",
+					["Method"] = "POST",
+					["Headers"] = {
+						["Content-Type"] = "application/json",
+						["Origin"] = "https://discord.com"
+					},
+					["Body"] = HttpService:JSONEncode({
+						["cmd"] = "INVITE_BROWSER",
+						["nonce"] = string.lower(HttpService:GenerateGUID(false)),
+						["args"] = {
+							["code"] = "sYqDpbPYb7"
+						}
+					})
 				})
+			end}):ToolTip("Join for support, updates and more!")
+			local BackgroundSection = SettingsTab:Section({Name = "Background",Side = "Right"}) do
+				BackgroundSection:Dropdown({Name = "Image",Default = {Parvus.Config.UI.Background},List = {
+					{Name = "Legacy",Mode = "Button",Callback = function()
+						Window.Background.Image = "rbxassetid://2151741365"
+						Parvus.Config.UI.BackgroundId = "rbxassetid://2151741365"
+					end},
+					{Name = "Hearts",Mode = "Button",Callback = function()
+						Window.Background.Image = "rbxassetid://6073763717"
+						Parvus.Config.UI.BackgroundId = "rbxassetid://6073763717"
+					end},
+					{Name = "Abstract",Mode = "Button",Callback = function()
+						Window.Background.Image = "rbxassetid://6073743871"
+						Parvus.Config.UI.BackgroundId = "rbxassetid://6073743871"
+					end},
+					{Name = "Hexagon",Mode = "Button",Callback = function()
+						Window.Background.Image = "rbxassetid://6073628839"
+						Parvus.Config.UI.BackgroundId = "rbxassetid://6073628839"
+					end},
+					{Name = "Circles",Mode = "Button",Callback = function()
+						Window.Background.Image = "rbxassetid://6071579801"
+						Parvus.Config.UI.BackgroundId = "rbxassetid://6071579801"
+					end},
+					{Name = "Lace With Flowers",Mode = "Button",Callback = function()
+						Window.Background.Image = "rbxassetid://6071575925"
+						Parvus.Config.UI.BackgroundId = "rbxassetid://6071575925"
+					end},
+					{Name = "Floral",Mode = "Button",Callback = function()
+						Window.Background.Image = "rbxassetid://5553946656"
+						Parvus.Config.UI.BackgroundId = "rbxassetid://5553946656"
+					end}
+				}})
+				Window.Background.Image = Parvus.Config.UI.BackgroundId
+				Window.Background.ImageTransparency = Parvus.Config.UI.BackgroundColor[4]
+				Window.Background.TileSize = UDim2.new(0,Parvus.Config.UI.TileSize,0,Parvus.Config.UI.TileSize)
+				Window.Background.ImageColor3 = Parvus.Utilities.Config:TableToColor(Parvus.Config.UI.BackgroundColor)
+				BackgroundSection:Textbox({Name = "Custom Image",Text = "",Placeholder = "ImageId",Callback = function(String)
+					Window.Background.Image = "rbxassetid://" .. String
+					Parvus.Config.UI.BackgroundId = "rbxassetid://" .. String
+				end})
+				BackgroundSection:Colorpicker({Name = "Color",HSVAR = Parvus.Config.UI.BackgroundColor,Callback = function(HSVAR,Color)
+					Parvus.Config.UI.BackgroundColor = HSVAR
+					Window.Background.ImageColor3 = Color
+					Window.Background.ImageTransparency = HSVAR[4]
+				end})
+				BackgroundSection:Slider({Name = "Tile Offset",Min = 74, Max = 296,Value = Window.Background.TileSize.X.Offset,Callback = function(Number)
+					Parvus.Config.UI.TileSize = Number
+					Window.Background.TileSize = UDim2.new(0,Number,0,Number)
+				end})
 			end
-		end)
+			local CreditsSection = SettingsTab:Section({Name = "Credits",Side = "Right"}) do
+				CreditsSection:Label({Text = "ridgeHUN v4.0 | re-written"})
+				CreditsSection:Divider()
+				CreditsSection:Label({Text = "i hate jetpack"})
+			end
+		end
+	end
+
+	local function TeamCheck(Player)
+		if Parvus.Config.AimAssist.TeamCheck then
+			return LocalPlayer.Team ~= Player.Team
+		end
+		return true
+	end
+
+	local function WallCheck(Enabled,Hitbox,Character)
+		if not Enabled then return true end
+		local Camera = Workspace.CurrentCamera
+		return not Camera:GetPartsObscuringTarget({Hitbox.Position},{
+			LocalPlayer.Character,
+			Character
+		})[1]
+	end
+
+	local function GetHitbox(Config)
+		if not Config.Enabled then return end
+		local Camera = Workspace.CurrentCamera
+		local FieldOfView = Config.FieldOfView
+		local ClosestHitbox = nil
 
 		for Index, Player in pairs(PlayerService:GetPlayers()) do
-			if Player ~= LocalPlayer then
-				Parvus.Utilities.Drawing:AddESP("Player", Player, Parvus.Config.PlayerESP)
+			local Character = Player.Character
+			local Humanoid = Character and Character:FindFirstChildOfClass("Humanoid")
+			local IsAlive = Humanoid and Humanoid.Health > 0
+			if Player ~= LocalPlayer and IsAlive and TeamCheck(Player) then
+				for Index, HumanoidPart in pairs(Config.Priority) do
+					local Hitbox = Character and Character:FindFirstChild(HumanoidPart)
+					if Hitbox then
+						local ScreenPosition, OnScreen = Camera:WorldToViewportPoint(Hitbox.Position)
+						local Magnitude = (Vector2.new(ScreenPosition.X, ScreenPosition.Y) - UserInputService:GetMouseLocation()).Magnitude
+						FieldOfView = Config.DynamicFoV and (120 - Workspace.CurrentCamera.FieldOfView) * 4 or FieldOfView
+						if OnScreen and Magnitude < FieldOfView and WallCheck(Config.WallCheck,Hitbox,Character) then
+							FieldOfView = Magnitude
+							ClosestHitbox = Hitbox
+						end
+					end
+				end
 			end
 		end
-		PlayerService.PlayerAdded:Connect(function(Player)
+
+		return ClosestHitbox
+	end
+
+	local function AimAt(Hitbox,Config)
+		if not Hitbox then return end
+		local Camera = Workspace.CurrentCamera
+		local Mouse = UserInputService:GetMouseLocation()
+
+		local HitboxDistance = (Hitbox.Position - Camera.CFrame.Position).Magnitude
+		local HitboxVelocityCorrection = (Hitbox.AssemblyLinearVelocity * HitboxDistance) / Config.Prediction.Velocity
+
+		local HitboxOnScreen = Camera:WorldToViewportPoint(Config.Prediction.Enabled
+			and Hitbox.Position + HitboxVelocityCorrection or Hitbox.Position)
+		mousemoverel(
+			(HitboxOnScreen.X - Mouse.X) * Config.Sensitivity,
+			(HitboxOnScreen.Y - Mouse.Y) * Config.Sensitivity
+		)
+	end
+
+	local __namecall
+	__namecall = hookmetamethod(game, "__namecall", function(self, ...)
+		local args = {...}
+		if Parvus.Config.AimAssist.SilentAim.Enabled and SilentAim then
+			local Camera = Workspace.CurrentCamera
+			local HitChance = math.random(0,100) <= Parvus.Config.AimAssist.SilentAim.HitChance
+			if getnamecallmethod() == "Raycast" and HitChance then
+				args[2] = SilentAim.Position - Camera.CFrame.Position
+			elseif getnamecallmethod() == "FindPartOnRayWithIgnoreList" and HitChance then
+				args[1] = Ray.new(args[1].Origin,SilentAim.Position - Camera.CFrame.Position)
+			end
+		end
+		return __namecall(self, unpack(args))
+	end)
+
+	RunService.Heartbeat:Connect(function()
+		SilentAim = GetHitbox(Parvus.Config.AimAssist.SilentAim)
+		if Aimbot then AimAt(
+			GetHitbox(Parvus.Config.AimAssist.Aimbot),
+			Parvus.Config.AimAssist.Aimbot)
+		end
+
+		if Parvus.Config.UI.Watermark then
+			Parvus.Utilities.UI:Watermark({
+				Enabled = true,
+				Title = string.format(
+					"ridgeHUN v4.0 — %s\nTime: %s - %s\nFPS: %i/s\nPing: %i ms",
+					Parvus.Current,os.date("%X"),os.date("%x"),GetFPS(),math.round(Stats.PerformanceStats.Ping:GetValue())
+				)
+			})
+		end
+	end)
+
+	for Index, Player in pairs(PlayerService:GetPlayers()) do
+		if Player ~= LocalPlayer then
 			Parvus.Utilities.Drawing:AddESP("Player", Player, Parvus.Config.PlayerESP)
-		end)
-		PlayerService.PlayerRemoving:Connect(function(Player)
-			if Player == LocalPlayer then Parvus.Utilities.Config:WriteJSON(Parvus.Current,Parvus.Config) end
-			Parvus.Utilities.Drawing:RemoveESP(Player)
-		end)
+		end
+	end
+	PlayerService.PlayerAdded:Connect(function(Player)
+		Parvus.Utilities.Drawing:AddESP("Player", Player, Parvus.Config.PlayerESP)
+	end)
+	PlayerService.PlayerRemoving:Connect(function(Player)
+		if Player == LocalPlayer then Parvus.Utilities.Config:WriteJSON(Parvus.Current,Parvus.Config) end
+		Parvus.Utilities.Drawing:RemoveESP(Player)
+
+	end)
