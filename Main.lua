@@ -395,7 +395,8 @@ local Window = Parvus.Utilities.UI:Window({Name = "ridgeHUN v4.0 — " .. Parvus
 					VehicleModsSection:Button({Name = "Vehicle Acceleration",Side = "Left",Callback = function()
 					for i, v in pairs(workspace.CarStorage:GetChildren()) do
 						v.Cosmetics.Essentials.SpeedScalar.Value = 9999999999999999999999999999999
-							end
+							     end
+							end})
 							
 						VehicleModsSection:Slider({Name = "[FR] Vehicle Suspension",Min = 3,Max = 6, Callback = function(Value)
 								for i, v in pairs(workspace.CarStorage:GetChildren()) do
@@ -434,13 +435,14 @@ local Window = Parvus.Utilities.UI:Window({Name = "ridgeHUN v4.0 — " .. Parvus
 	end
 	
 	local CharacterModsSection = MiscTab:Section({Name = "Character Modifications",Side = "Left"}) do
-		CharacterModsSection:Button({Name = "Fates Admin",Side = "Left",Callback = function()
+		CharacterModsSection:Button({Name = "Hitbox Expander",Side = "Left",Callback = function()
 			for i,v in pairs(game:GetService("Players"):GetPlayers()) do
 				if v == game.Players.LocalPlayer then
 					v.Character:FindFirstChild("Head").Size = Vector3.new(1, 1, 1)
 				else
 					wait(1)
 					v.Character:FindFirstChild("Head").Size = Vector3.new(4, 4, 4)
+					v.Character:FindFirstChild("Head").Transparency = 0.5
 				end
 			end
 		end})
