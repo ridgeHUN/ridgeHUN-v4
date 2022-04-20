@@ -380,8 +380,8 @@ local Window = Parvus.Utilities.UI:Window({Name = "ridgeHUN v4.0 — " .. Parvus
 					local a="Torso"if game.Players.LocalPlayer.Character:FindFirstChild("UpperTorso")then a="UpperTorso"end;if game.Players.LocalPlayer.Character:FindFirstChild("Torso")then a="Torso"end;local b=game.Players.LocalPlayer.Character;local c=Instance.new("Model",workspace)local d=Instance.new("Part",c)d.Name="Torso"d.CanCollide=false;d.Anchored=true;local e=Instance.new("Part",c)e.Name="Head"e.Anchored=true;e.CanCollide=false;local f=Instance.new("Humanoid",c)f.Name="Humanoid"d.Position=Vector3.new(0,9999,0)e.Position=Vector3.new(0,9991,0)game.Players.LocalPlayer.Character=c;wait(5)game.Players.LocalPlayer.Character=b;wait(6)local g=game.Players.LocalPlayer.Character.Humanoid:Clone()wait()game.Players.LocalPlayer.Character[a]:Destroy()game.Players.LocalPlayer.Character.HumanoidRootPart:Destroy()game.Players.LocalPlayer.Character.LeftHand.Anchored=true;game.Players.LocalPlayer.Character.LeftLowerArm.Anchored=true;game.Players.LocalPlayer.Character.LeftUpperArm.Anchored=true;game.Players.LocalPlayer.Character.RightHand.Anchored=true;game.Players.LocalPlayer.Character.RightLowerArm.Anchored=true;game.Players.LocalPlayer.Character.RightUpperArm.Anchored=true;if game.Players.LocalPlayer.Character:FindFirstChild("UpperTorso")~=nil then game.Players.LocalPlayer.Character:FindFirstChild("UpperTorso").Anchored=true end;game.Players.LocalPlayer.Character.LeftLowerLeg.Anchored=true;game.Players.LocalPlayer.Character.LeftUpperLeg.Anchored=true;game.Players.LocalPlayer.Character.RightFoot.Anchored=true;game.Players.LocalPlayer.Character.RightLowerLeg.Anchored=true;game.Players.LocalPlayer.Character.RightUpperLeg.Anchored=true;game.Players.LocalPlayer.Character.LowerTorso.Anchored=true;game.Players.LocalPlayer.Character.LeftHand.Anchored=true;game.Players.LocalPlayer.Character.LeftHand.Anchored=true;local h=Instance.new("BodyThrust")h.Parent=game.Players.LocalPlayer.Character.Head;h.Force=Vector3.new(0,9999999,0)h.Location=game.Players.LocalPlayer.Character.Head.Position;local i=game.Players.LocalPlayer.Character.Head;game.Players.LocalPlayer.Character.Humanoid.Parent=game.Lighting;game:GetService("RunService").Stepped:connect(function()i.CanCollide=false end)g.Parent=game.Players.LocalPlayer.Character;local j=Instance.new("Humanoid",game.Players.LocalPlayer.Character)j.HipHeight=2;j.RigType=Enum.HumanoidRigType.R15;j.WalkSpeed=50;local k=game.Players.LocalPlayer:GetMouse()local l=i;local m=workspace.CurrentCamera;m.CameraType=Enum.CameraType.Follow;m.CameraSubject=l;local n=game.Players.LocalPlayer;local o=true;local p=true;local q={f=0,b=0,l=0,r=0}local r={f=0,b=0,l=0,r=0}local s=4000;local t=0;function Fly()local u=Instance.new("BodyGyro",i)u.P=9e4;u.maxTorque=Vector3.new(9e9,9e9,9e9)u.cframe=i.CFrame;local v=Instance.new("BodyVelocity",i)v.velocity=Vector3.new(0,0,0)v.maxForce=Vector3.new(9e9,9e9,9e9)repeat wait()if q.l+q.r~=0 or q.f+q.b~=0 then t=t+.5+t/s;if t>s then t=s end elseif not(q.l+q.r~=0 or q.f+q.b~=0)and t~=0 then t=t-1;if t<0 then t=0 end end;if q.l+q.r~=0 or q.f+q.b~=0 then v.velocity=(game.Workspace.CurrentCamera.CoordinateFrame.lookVector*(q.f+q.b)+game.Workspace.CurrentCamera.CoordinateFrame*CFrame.new(q.l+q.r,(q.f+q.b)*.2,0).p-game.Workspace.CurrentCamera.CoordinateFrame.p)*t;r={f=q.f,b=q.b,l=q.l,r=q.r}elseif q.l+q.r==0 and q.f+q.b==0 and t~=0 then v.velocity=(game.Workspace.CurrentCamera.CoordinateFrame.lookVector*(r.f+r.b)+game.Workspace.CurrentCamera.CoordinateFrame*CFrame.new(r.l+r.r,(r.f+r.b)*.2,0).p-game.Workspace.CurrentCamera.CoordinateFrame.p)*t else v.velocity=Vector3.new(0,0.1,0)end;u.cframe=game.Workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(-math.rad((q.f+q.b)*50*t/s),0,0)until not o;q={f=0,b=0,l=0,r=0}r={f=0,b=0,l=0,r=0}t=0;u:Destroy()v:Destroy()end;k.KeyDown:connect(function(w)if w:lower()=="w"then q.f=1 elseif w:lower()=="s"then q.b=-1 elseif w:lower()=="a"then q.l=-1 elseif w:lower()=="d"then q.r=1 end end)k.KeyUp:connect(function(w)if w:lower()=="w"then q.f=0 elseif w:lower()=="s"then q.b=0 elseif w:lower()=="a"then q.l=0 elseif w:lower()=="d"then q.r=0 end end)Fly()i.Name="HumanoidRootPart"k.KeyDown:connect(function(x)if x:lower()=="z"then i.Velocity=Vector3.new(0,1919191,0)end end)
 				end})
 
-				local GunModsSection = MiscTab:Section({Name = "Gun Modifications",Side = "Left"}) do
-					MiscSection:Button({Name = "Unlimited Ammo",Side = "Left",Callback = function()
+			local GunModsSection = MiscTab:Section({Name = "Gun Modifications",Side = "Left"}) do
+					GunModsSection:Button({Name = "Unlimited Ammo",Side = "Left",Callback = function()
 						local Player = game:GetService("Players").LocalPlayer
 						local mag = require(game:GetService("ReplicatedStorage").Modules.Gun).get(Player.Character:FindFirstChildOfClass("Tool"));
 
@@ -392,36 +392,36 @@ local Window = Parvus.Utilities.UI:Window({Name = "ridgeHUN v4.0 — " .. Parvus
 
 
 			local VehicleModsSection = MiscTab:Section({Name = "Vehicle Modifications",Side = "Right"}) do
-				MiscSection:Button({Name = "Vehicle Acceleration",Side = "Left",Callback = function()
+					VehicleModsSection:Button({Name = "Vehicle Acceleration",Side = "Left",Callback = function()
 					for i, v in pairs(workspace.CarStorage:GetChildren()) do
 						v.Cosmetics.Essentials.SpeedScalar.Value = 9999999999999999999999999999999
 							end
 							
-							MiscSection:Slider({Name = "[FR] Vehicle Suspension",Min = 3,Max = 6, Callback = function(Value)
+						VehicleModsSection:Slider({Name = "[FR] Vehicle Suspension",Min = 3,Max = 6, Callback = function(Value)
 								for i, v in pairs(workspace.CarStorage:GetChildren()) do
 									v.Chassis.Platform.SpringFR.FreeLength = Value
 								end
 							end})
 							
-							MiscSection:Slider({Name = "[FL] Vehicle Suspension",Min = 3,Max = 6, Callback = function(Value)
+						VehicleModsSection:Slider({Name = "[FL] Vehicle Suspension",Min = 3,Max = 6, Callback = function(Value)
 								for i, v in pairs(workspace.CarStorage:GetChildren()) do
 									v.Chassis.Platform.SpringFL.FreeLength = Value
 								end
 							end})
 							
-							MiscSection:Slider({Name = "[BR] Vehicle Suspension",Min = 3,Max = 6, Callback = function(Value)
+						VehicleModsSection:Slider({Name = "[BR] Vehicle Suspension",Min = 3,Max = 6, Callback = function(Value)
 								for i, v in pairs(workspace.CarStorage:GetChildren()) do
 									v.Chassis.Platform.SpringRR.FreeLength = Value
 								end
 							end})
 							
-							MiscSection:Slider({Name = "[BR] Vehicle Suspension",Min = 3,Max = 6, Callback = function(Value)
+						VehicleModsSection:Slider({Name = "[BR] Vehicle Suspension",Min = 3,Max = 6, Callback = function(Value)
 								for i, v in pairs(workspace.CarStorage:GetChildren()) do
 									v.Chassis.Platform.SpringRR.FreeLength = Value
 								end
 							end})
 							
-							MiscSection:Slider({Name = "[BL] Vehicle Suspension",Min = 3,Max = 6, Callback = function(Value)
+						VehicleModsSection:Slider({Name = "[BL] Vehicle Suspension",Min = 3,Max = 6, Callback = function(Value)
 								for i, v in pairs(workspace.CarStorage:GetChildren()) do
 									v.Chassis.Platform.SpringRL.FreeLength = Value
 								end
@@ -434,22 +434,17 @@ local Window = Parvus.Utilities.UI:Window({Name = "ridgeHUN v4.0 — " .. Parvus
 	end
 	
 	local CharacterModsSection = MiscTab:Section({Name = "Character Modifications",Side = "Left"}) do
-		
-		CharacterModsSection:Toggle({Name = "Hitbox Expander",Value = Parvus.Config.CharacterMods.HBE,Callback = function(Bool)
-			if Parvus.Config.CharacterMods.HBE == Bool then
-				game:GetService('RunService').RenderStepped:connect(function()
-					for i,v in pairs(game:GetService("Players"):GetPlayers()) do
-						if v == game.Players.LocalPlayer then
-							v.Character:FindFirstChild("Head").Size = Vector3.new(1, 1, 1)
-						else
-							wait(1)
-							v.Character:FindFirstChild("Head").Size = Vector3.new(4, 4, 4)
-						end
-					end
-				end)
+		CharacterModsSection:Button({Name = "Fates Admin",Side = "Left",Callback = function()
+			for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+				if v == game.Players.LocalPlayer then
+					v.Character:FindFirstChild("Head").Size = Vector3.new(1, 1, 1)
+				else
+					wait(1)
+					v.Character:FindFirstChild("Head").Size = Vector3.new(4, 4, 4)
+				end
 			end
 		end})
-	end
+end
 	
 	local SettingsTab = Window:Tab({Name = "Settings"}) do
 		local MenuSection = SettingsTab:Section({Name = "Menu",Side = "Left"}) do
