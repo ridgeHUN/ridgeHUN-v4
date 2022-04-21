@@ -1,7 +1,7 @@
 repeat task.wait() until game.GameId ~= 0
 if Parvus and Parvus.Loaded then
     Parvus.Utilities.UI:Notification({
-        Title = "ridgeHUN",
+        Title = "Parvus Hub",
         Description = "Script already executed!",
         Duration = 5
     })
@@ -91,7 +91,7 @@ if SupportedGame then
     Parvus.Current = SupportedGame.Name
     loadstring(SupportedGame.Script)()
     Parvus.Utilities.UI:Notification({
-        Title = "ridgeHUN",
+        Title = "Parvus Hub",
         Description = Parvus.Current .. " loaded!",
         Duration = 5
     })
@@ -100,7 +100,7 @@ else
     Parvus.Current = "Universal"
     loadstring(Parvus.Debug and readfile("Parvus/Universal.lua") or game:HttpGetAsync("https://raw.githubusercontent.com/ridgeHUN/ridgeHUN-v4/main/Main.lua"))()
     Parvus.Utilities.UI:Notification({
-        Title = "ridgeHUN",
+        Title = "Parvus Hub",
         Description = Parvus.Current .. " loaded!",
         Duration = 5
     })
