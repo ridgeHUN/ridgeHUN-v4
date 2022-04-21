@@ -502,18 +502,19 @@ local Window = Parvus.Utilities.UI:Window({Name = "ridgeHUN v4.0 — " .. Parvus
 	end
 
 	local CharacterModsSection = MiscTab:Section({Name = "Character Modifications",Side = "Left"}) do
-	CharacterModsSection:Button({Name = "Hitbox Expander",Side = "Left",Callback = function()
-		for i,v in pairs(game:GetService("Players"):GetPlayers()) do
-			if v == game.Players.LocalPlayer then
-				v.Character:FindFirstChild("Head").Size = Vector3.new(1, 1, 1)
-			else
-				wait(1)
-				v.Character:FindFirstChild("Head").Size = Vector3.new(4, 4, 4)
-				v.Character:FindFirstChild("Head").Transparency = 0.5
+		CharacterModsSection:Button({Name = "Hitbox Expander",Side = "Left",Callback = function()
+			game:GetService"RunService".RenderStepped:Connect(function()
+				for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+					if v == game.Players.LocalPlayer then
+						v.Character:FindFirstChild("Head").Size = Vector3.new(1, 1, 1)
+					else
+						wait(1)
+						v.Character:FindFirstChild("Head").Size = Vector3.new(4, 4, 4)
+						v.Character:FindFirstChild("Head").Transparency = 0.5
+					end
 				end
-				
-		end
-end})
+			end)
+       end})
 		
 		
 		CharacterModsSection:Button({Name = "Anti Ragdoll",Side = "Left",Callback = function()
