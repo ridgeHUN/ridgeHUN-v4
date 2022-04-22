@@ -82,9 +82,9 @@ Parvus.Config = Parvus.Utilities.Config:ReadJSON(Parvus.Current, {
 		},
 
 		CharacterMods = {
-			HBE = false,
+			HitboxExpander = false,
 			AntiRagdoll = false,
-			AlwaysSprint = false,
+			AlwaysSprint = false
 
 		},
 
@@ -515,6 +515,24 @@ local Window = Parvus.Utilities.UI:Window({Name = "ridgeHUN v4.0 — " .. Parvus
 				end
 			end)
        end})
+
+	   		CharacterModsSection:Toggle({Name = "Toggle Hitbox",Value = Parvus.Config.AimAssist.Aimbot.Prediction.Enabled,Callback = function(Bool)
+				Parvus.Config.CharacterMods.HitboxExpander.Enabled = Bool
+
+					if Parvus.Config.CharacterMods.HitboxExpander then
+			game:GetService"RunService".RenderStepped:Connect(function()
+				for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+					if v == game.Players.LocalPlayer then
+						v.Character:FindFirstChild("Head").Size = Vector3.new(1, 1, 1)
+					else
+						wait(1)
+						v.Character:FindFirstChild("Head").Size = Vector3.new(4, 4, 4)
+						v.Character:FindFirstChild("Head").Transparency = 0.5
+					end
+				end
+			end)
+	end
+			end})
 		
 		
 		CharacterModsSection:Button({Name = "Anti Ragdoll",Side = "Left",Callback = function()
