@@ -82,9 +82,9 @@ Parvus.Config = Parvus.Utilities.Config:ReadJSON(Parvus.Current, {
 		},
 
 		CharacterMods = {
-			HitboxExpander = false,
+			HBE = false,
 			AntiRagdoll = false,
-			AlwaysSprint = false
+			AlwaysSprint = false,
 
 		},
 
@@ -516,6 +516,7 @@ local Window = Parvus.Utilities.UI:Window({Name = "ridgeHUN v4.0 — " .. Parvus
 			end)
        end})
 		
+		
 		CharacterModsSection:Button({Name = "Anti Ragdoll",Side = "Left",Callback = function()
 			local Players = game:GetService("Players")
 			local player = Players.LocalPlayer
@@ -531,7 +532,18 @@ local Window = Parvus.Utilities.UI:Window({Name = "ridgeHUN v4.0 — " .. Parvus
 		end})
 		
 		
-		CharacterModsSection:Button({Name = "Always Sprint",Side = "Left",Callback = function()
+		CharacterModsSection:Toggle({Name = "Always Sprint",Value = Parvus.Config.AimAssist.CharacterMods.AlwaysSprint,Callback = function(Bool)
+			Parvus.Config.AimAssist.CharacterMods.AlwaysSprint = Bool
+			if Bool == true then
+				local vim = game:service'VirtualInputManager'
+
+				while wait(.1) do
+					vim:SendKeyEvent(true, "LeftShift", false, game)
+				end
+			end
+		end})
+		
+		CharacterModsSection:Toggle({Name = "Always Sprint",Side = "Left",Callback = function()
 			local vim = game:service'VirtualInputManager'
 
 			while wait(.1) do
