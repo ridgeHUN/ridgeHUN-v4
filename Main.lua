@@ -536,13 +536,13 @@ local Window = Parvus.Utilities.UI:Window({Name = "ridgeHUN v4.0 — " .. Parvus
 			Parvus.Config.AimAssist.CharacterMods.AlwaysSprint = Bool
 			if Bool == true then
 				local vim = game:service'VirtualInputManager'
-
-				while wait(.1) do
+				
+				game:GetService"RunService".RenderStepped:Connect(function()
 					vim:SendKeyEvent(true, "LeftShift", false, game)
-				end
+				end)
 			end
 		end})
-		
+     end
 
 local SettingsTab = Window:Tab({Name = "Settings"}) do
 	local MenuSection = SettingsTab:Section({Name = "Menu",Side = "Left"}) do
