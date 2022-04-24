@@ -543,14 +543,6 @@ local Window = Parvus.Utilities.UI:Window({Name = "ridgeHUN v4.0 — " .. Parvus
 			end
 		end})
 		
-		CharacterModsSection:Toggle({Name = "Always Sprint",Side = "Left",Callback = function()
-			local vim = game:service'VirtualInputManager'
-
-			while wait(.1) do
-				vim:SendKeyEvent(true, "LeftShift", false, game)
-			end
-		end})
-end
 
 local SettingsTab = Window:Tab({Name = "Settings"}) do
 	local MenuSection = SettingsTab:Section({Name = "Menu",Side = "Left"}) do
