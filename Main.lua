@@ -540,6 +540,10 @@ local Window = Parvus.Utilities.UI:Window({Name = "ridgeHUN v4.0 — " .. Parvus
 				game:GetService"RunService".RenderStepped:Connect(function()
 					vim:SendKeyEvent(true, "LeftShift", false, game)
 				end)
+			else
+				game:GetService"RunService".RenderStepped:Connect(function()
+					vim:SendKeyEvent(false, "LeftShift", false, game)
+				end)
 			end
 		end})
      end
