@@ -11,7 +11,7 @@ local Ping = Stats.Network.ServerStatsItem["Data Ping"]
 local Aimbot,SilentAim = false,nil
 
 local Window = Parvus.Utilities.UI:Window({
-	Name = "Parvus Hub — "..Parvus.Current,
+	Name = "hanoware — "..Parvus.Current,
 	Position = UDim2.new(0.05,0,0.5,-248)
 }) do Window:Watermark({Enabled = true})
 
