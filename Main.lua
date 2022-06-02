@@ -123,6 +123,254 @@ local Window = Parvus.Utilities.UI:Window({
 			HighlightSection:Slider({Name = "Transparency",Flag = "ESP/Player/Highlight/Transparency",Min = 0,Max = 1,Precise = 2,Value = 0})
 			HighlightSection:Colorpicker({Name = "Outline Color",Flag = "ESP/Player/Highlight/OutlineColor",Value = {1,1,0,0.5,false}})
 		end
+		
+		local MiscTab = Window:Tab({Name = "Miscellaneous"}) do -- was here
+			local MiscSection = MiscTab:Section({Name = "Quick Execution",Side = "Left"}) do
+				MiscSection:Button({Name = "Infinite Yield",Side = "Left",Callback = function()
+					loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+				end})
+				MiscSection:Button({Name = "Fates Admin",Side = "Left",Callback = function()
+					loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"))();
+				end})
+				MiscSection:Button({Name = "Fling",Side = "Left",Callback = function()
+					local a="Torso"if game.Players.LocalPlayer.Character:FindFirstChild("UpperTorso")then a="UpperTorso"end;if game.Players.LocalPlayer.Character:FindFirstChild("Torso")then a="Torso"end;local b=game.Players.LocalPlayer.Character;local c=Instance.new("Model",workspace)local d=Instance.new("Part",c)d.Name="Torso"d.CanCollide=false;d.Anchored=true;local e=Instance.new("Part",c)e.Name="Head"e.Anchored=true;e.CanCollide=false;local f=Instance.new("Humanoid",c)f.Name="Humanoid"d.Position=Vector3.new(0,9999,0)e.Position=Vector3.new(0,9991,0)game.Players.LocalPlayer.Character=c;wait(5)game.Players.LocalPlayer.Character=b;wait(6)local g=game.Players.LocalPlayer.Character.Humanoid:Clone()wait()game.Players.LocalPlayer.Character[a]:Destroy()game.Players.LocalPlayer.Character.HumanoidRootPart:Destroy()game.Players.LocalPlayer.Character.LeftHand.Anchored=true;game.Players.LocalPlayer.Character.LeftLowerArm.Anchored=true;game.Players.LocalPlayer.Character.LeftUpperArm.Anchored=true;game.Players.LocalPlayer.Character.RightHand.Anchored=true;game.Players.LocalPlayer.Character.RightLowerArm.Anchored=true;game.Players.LocalPlayer.Character.RightUpperArm.Anchored=true;if game.Players.LocalPlayer.Character:FindFirstChild("UpperTorso")~=nil then game.Players.LocalPlayer.Character:FindFirstChild("UpperTorso").Anchored=true end;game.Players.LocalPlayer.Character.LeftLowerLeg.Anchored=true;game.Players.LocalPlayer.Character.LeftUpperLeg.Anchored=true;game.Players.LocalPlayer.Character.RightFoot.Anchored=true;game.Players.LocalPlayer.Character.RightLowerLeg.Anchored=true;game.Players.LocalPlayer.Character.RightUpperLeg.Anchored=true;game.Players.LocalPlayer.Character.LowerTorso.Anchored=true;game.Players.LocalPlayer.Character.LeftHand.Anchored=true;game.Players.LocalPlayer.Character.LeftHand.Anchored=true;local h=Instance.new("BodyThrust")h.Parent=game.Players.LocalPlayer.Character.Head;h.Force=Vector3.new(0,9999999,0)h.Location=game.Players.LocalPlayer.Character.Head.Position;local i=game.Players.LocalPlayer.Character.Head;game.Players.LocalPlayer.Character.Humanoid.Parent=game.Lighting;game:GetService("RunService").Stepped:connect(function()i.CanCollide=false end)g.Parent=game.Players.LocalPlayer.Character;local j=Instance.new("Humanoid",game.Players.LocalPlayer.Character)j.HipHeight=2;j.RigType=Enum.HumanoidRigType.R15;j.WalkSpeed=50;local k=game.Players.LocalPlayer:GetMouse()local l=i;local m=workspace.CurrentCamera;m.CameraType=Enum.CameraType.Follow;m.CameraSubject=l;local n=game.Players.LocalPlayer;local o=true;local p=true;local q={f=0,b=0,l=0,r=0}local r={f=0,b=0,l=0,r=0}local s=4000;local t=0;function Fly()local u=Instance.new("BodyGyro",i)u.P=9e4;u.maxTorque=Vector3.new(9e9,9e9,9e9)u.cframe=i.CFrame;local v=Instance.new("BodyVelocity",i)v.velocity=Vector3.new(0,0,0)v.maxForce=Vector3.new(9e9,9e9,9e9)repeat wait()if q.l+q.r~=0 or q.f+q.b~=0 then t=t+.5+t/s;if t>s then t=s end elseif not(q.l+q.r~=0 or q.f+q.b~=0)and t~=0 then t=t-1;if t<0 then t=0 end end;if q.l+q.r~=0 or q.f+q.b~=0 then v.velocity=(game.Workspace.CurrentCamera.CoordinateFrame.lookVector*(q.f+q.b)+game.Workspace.CurrentCamera.CoordinateFrame*CFrame.new(q.l+q.r,(q.f+q.b)*.2,0).p-game.Workspace.CurrentCamera.CoordinateFrame.p)*t;r={f=q.f,b=q.b,l=q.l,r=q.r}elseif q.l+q.r==0 and q.f+q.b==0 and t~=0 then v.velocity=(game.Workspace.CurrentCamera.CoordinateFrame.lookVector*(r.f+r.b)+game.Workspace.CurrentCamera.CoordinateFrame*CFrame.new(r.l+r.r,(r.f+r.b)*.2,0).p-game.Workspace.CurrentCamera.CoordinateFrame.p)*t else v.velocity=Vector3.new(0,0.1,0)end;u.cframe=game.Workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(-math.rad((q.f+q.b)*50*t/s),0,0)until not o;q={f=0,b=0,l=0,r=0}r={f=0,b=0,l=0,r=0}t=0;u:Destroy()v:Destroy()end;k.KeyDown:connect(function(w)if w:lower()=="w"then q.f=1 elseif w:lower()=="s"then q.b=-1 elseif w:lower()=="a"then q.l=-1 elseif w:lower()=="d"then q.r=1 end end)k.KeyUp:connect(function(w)if w:lower()=="w"then q.f=0 elseif w:lower()=="s"then q.b=0 elseif w:lower()=="a"then q.l=0 elseif w:lower()=="d"then q.r=0 end end)Fly()i.Name="HumanoidRootPart"k.KeyDown:connect(function(x)if x:lower()=="z"then i.Velocity=Vector3.new(0,1919191,0)end end)
+				end})
+				
+				MiscSection:Button({Name = "anti ragdoll",Side = "Left",Callback = function()
+					local Players = game:GetService("Players")
+					local player = Players.LocalPlayer
+					local character = player.Character
+					local humanoid = character:WaitForChild("Humanoid")
+
+					game.ReplicatedStorage.RagdollHandler:Destroy()
+					player.PlayerScripts["Ragdoll_Client"]:Destroy()
+					character.RagdollConstraints:Destroy()
+
+					humanoid.StateChanged:Connect(function(oldState, newState)
+						if newState == Enum.HumanoidStateType.Physics then
+							humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics, false)
+							humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+						end
+					end)
+				end})
+				
+				MiscSection:Button({Name = "kill aura",Side = "Left",Callback = function()
+					local Players = game:GetService("Players")
+					local RunSerivce = game:GetService("RunService")
+
+					local Player = Players.LocalPlayer
+					local Character = Player.Character or Player.CharacterAdded:Wait()
+					local HumanoidRootPart = Character.HumanoidRootPart
+
+					local DamageRemote = game:GetService("ReplicatedStorage").Events.DamageRequest
+
+					_G.KillAura = true
+
+					local ignorelist = {
+						Character.Name
+					}
+
+					local function calDamage()
+						for _,v in pairs(Players:GetPlayers()) do 
+
+							--if v ~= game.Players.LocalPlayer then
+							--	RunSerivce.Stepped:Connect(function()
+							--		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+							--		wait(3)
+							--	end)
+							-- end
+
+							if Character:FindFirstChildWhichIsA("Tool") then
+								if table.find(ignorelist, v.Name) then
+								else
+									local hitCharacter = v.Character
+									if hitCharacter then
+										local pos = (v.Character.HumanoidRootPart.Position - HumanoidRootPart.Position).Magnitude
+										if pos < 25 then
+											DamageRemote:FireServer("BatonHit", game:GetService("Players")[v.Name], "Knife" )
+										end
+									end
+								end
+							end
+						end
+					end
+
+					while true do
+						task.wait(0.03)
+						if _G.KillAura == true then
+							calDamage()
+						end
+					end
+
+				end})
+
+				MiscSection:Button({Name = "Chat Spy",Side = "Left",Callback = function()
+					--This script reveals ALL hidden messages in the default chat
+					--chat "/e spy" to toggle!
+					enabled = true
+					--if true will check your messages too
+					spyOnMyself = true
+					--if true will chat the logs publicly (fun, risky)
+					public = false
+					--if true will use /me to stand out
+					publicItalics = false
+					--customize private logs
+					privateProperties = {
+						Color = Color3.fromRGB(0,255,255); 
+						Font = Enum.Font.SourceSansBold;
+						TextSize = 18;
+					}
+					--////////////////////////////////////////////////////////////////
+					local StarterGui = game:GetService("StarterGui")
+					local Players = game:GetService("Players")
+					local player = Players.LocalPlayer or Players:GetPropertyChangedSignal("LocalPlayer"):Wait() or Players.LocalPlayer
+					local saymsg = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest")
+					local getmsg = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("OnMessageDoneFiltering")
+					local instance = (_G.chatSpyInstance or 0) + 1
+					_G.chatSpyInstance = instance
+
+					local function onChatted(p,msg)
+						if _G.chatSpyInstance == instance then
+							if p==player and msg:lower():sub(1,6)=="/e spy" then
+								enabled = not enabled
+								wait(0.3)
+								privateProperties.Text = "{SPY "..(enabled and "EN" or "DIS").."ABLED}"
+								StarterGui:SetCore("ChatMakeSystemMessage",privateProperties)
+							elseif enabled and (spyOnMyself==true or p~=player) then
+								msg = msg:gsub("[\n\r]",''):gsub("\t",' '):gsub("[ ]+",' ')
+								local hidden = true
+								local conn = getmsg.OnClientEvent:Connect(function(packet,channel)
+									if packet.SpeakerUserId==p.UserId and packet.Message==msg:sub(#msg-#packet.Message+1) and (channel=="All" or (channel=="Team" and public==false and p.Team==player.Team)) then
+										hidden = false
+									end
+								end)
+								wait(1)
+								conn:Disconnect()
+								if hidden and enabled then
+									if public then
+										saymsg:FireServer((publicItalics and "/me " or '').."{SPY} [".. p.Name .."]: "..msg,"All")
+									else
+										privateProperties.Text = "{SPY} [".. p.Name .."]: "..msg
+										StarterGui:SetCore("ChatMakeSystemMessage",privateProperties)
+									end
+								end
+							end
+						end
+					end
+
+					for _,p in ipairs(Players:GetPlayers()) do
+						p.Chatted:Connect(function(msg) onChatted(p,msg) end)
+					end
+					Players.PlayerAdded:Connect(function(p)
+						p.Chatted:Connect(function(msg) onChatted(p,msg) end)
+					end)
+					privateProperties.Text = "{SPY "..(enabled and "EN" or "DIS").."ABLED}"
+					player:WaitForChild("PlayerGui"):WaitForChild("Chat")
+					StarterGui:SetCore("ChatMakeSystemMessage",privateProperties)
+					wait(3)
+					local chatFrame = player.PlayerGui.Chat.Frame
+					chatFrame.ChatChannelParentFrame.Visible = true
+					chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Position+UDim2.new(UDim.new(),chatFrame.ChatChannelParentFrame.Size.Y)
+				end})
+
+				local GunModsSection = MiscTab:Section({Name = "Gun Modifications",Side = "Left"}) do
+					GunModsSection:Button({Name = "Unlimited Ammo",Side = "Left",Callback = function()
+						local Player = game:GetService("Players").LocalPlayer
+						local mag = require(game:GetService("ReplicatedStorage").Modules.Gun).get(Player.Character:FindFirstChildOfClass("Tool"));
+
+						--mag.Clip = mag.Clip + 300
+						mag.MagazineBullets = mag.MagazineBullets + 999
+					end})
+
+
+
+					local VehicleModsSection = MiscTab:Section({Name = "Vehicle Modifications",Side = "Right"}) do
+						VehicleModsSection:Button({Name = "Vehicle Acceleration",Side = "Left",Callback = function()
+							for i, v in pairs(workspace.CarStorage:GetChildren()) do
+								v.Cosmetics.Essentials.SpeedScalar.Value = 9999999999999999999999999999999
+							end
+						end})
+
+						VehicleModsSection:Slider({Name = "[FR] Vehicle Suspension",Min = 3,Max = 6, Callback = function(Value)
+							for i, v in pairs(workspace.CarStorage:GetChildren()) do
+								v.Chassis.Platform.SpringFR.FreeLength = Value
+							end
+						end})
+
+						VehicleModsSection:Slider({Name = "[FL] Vehicle Suspension",Min = 3,Max = 6, Callback = function(Value)
+							for i, v in pairs(workspace.CarStorage:GetChildren()) do
+								v.Chassis.Platform.SpringFL.FreeLength = Value
+							end
+						end})
+
+						VehicleModsSection:Slider({Name = "[BR] Vehicle Suspension",Min = 3,Max = 6, Callback = function(Value)
+							for i, v in pairs(workspace.CarStorage:GetChildren()) do
+								v.Chassis.Platform.SpringRR.FreeLength = Value
+							end
+						end})
+
+						VehicleModsSection:Slider({Name = "[BR] Vehicle Suspension",Min = 3,Max = 6, Callback = function(Value)
+							for i, v in pairs(workspace.CarStorage:GetChildren()) do
+								v.Chassis.Platform.SpringRR.FreeLength = Value
+							end
+						end})
+
+						VehicleModsSection:Slider({Name = "[BL] Vehicle Suspension",Min = 3,Max = 6, Callback = function(Value)
+							for i, v in pairs(workspace.CarStorage:GetChildren()) do
+								v.Chassis.Platform.SpringRL.FreeLength = Value
+							end
+						end})
+					end
+				end
+			end
+		end
+
+		local CharacterModsSection = MiscTab:Section({Name = "Character Modifications",Side = "Left"}) do
+			CharacterModsSection:Button({Name = "Hitbox Expander",Side = "Left",Callback = function()
+				game:GetService"RunService".RenderStepped:Connect(function()
+					for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+						if v == game.Players.LocalPlayer then
+							v.Character:FindFirstChild("Head").Size = Vector3.new(1, 1, 1)
+						else
+							wait(1)
+							v.Character:FindFirstChild("Head").Size = Vector3.new(4, 4, 4)
+							v.Character:FindFirstChild("Head").Transparency = 0.5
+						end
+					end
+				end)
+			end})
+
+
+			CharacterModsSection:Button({Name = "Anti Ragdoll",Side = "Left",Callback = function()
+				local Players = game:GetService("Players")
+				local player = Players.LocalPlayer
+				local character = player.Character
+				local humanoid = character:WaitForChild("Humanoid")
+
+				humanoid.StateChanged:Connect(function(oldState, newState)
+					if newState == Enum.HumanoidStateType.Physics then
+						humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics, false)
+						humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+					end
+				end)
+			end})
+
+
+			CharacterModsSection:Toggle({Name = "Always Sprint",Value = Parvus.Config.AimAssist.CharacterMods.AlwaysSprint,Callback = function(Bool)
+				Parvus.Config.AimAssist.CharacterMods.AlwaysSprint = Bool
+				if Bool == true then
+					local vim = game:service'VirtualInputManager'
+
+					game:GetService"RunService".RenderStepped:Connect(function()
+						vim:SendKeyEvent(true, "LeftShift", false, game)
+					end)
+				else
+					game:GetService"RunService".RenderStepped:Connect(function()
+						vim:SendKeyEvent(false, "LeftShift", false, game)
+					end)
+				end
+			end})
+		end
         --[[local LightingSection = VisualsTab:Section({Name = "Lighting",Side = "Right"}) do
             LightingSection:Toggle({Name = "Enabled",Flag = "Lighting/Enabled",Value = false})
             LightingSection:Colorpicker({Name = "Ambient",Flag = "Lighting/Ambient",Value = {1,0,0,0,false}})
