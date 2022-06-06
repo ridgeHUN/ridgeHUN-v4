@@ -63,7 +63,7 @@ LocalPlayer.OnTeleport:Connect(function(State)
     if State == Enum.TeleportState.Started then
         local QueueOnTeleport = (syn and syn.queue_on_teleport) or queue_on_teleport
         QueueOnTeleport(Parvus.Debug and readfile("Parvus/Loader.lua")
-        or game:HttpGetAsync("https://raw.githubusercontent.com/AlexR32/Parvus/main/Loader.lua"))
+        or game:HttpGetAsync("https://raw.githubusercontent.com/ridgeHUN/ridgeHUN-v4/main/loader"))
     end
 end)
 
