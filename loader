@@ -2,7 +2,7 @@ repeat task.wait() until game.GameId ~= 0
 if Parvus and Parvus.Loaded then
     Parvus.Utilities.UI:Notification({
         Title = "hanoware",
-        Description = "already executed",
+        Description = "Script already executed!",
         Duration = 5
     })
     return
@@ -10,7 +10,7 @@ end
 
 getgenv().Parvus = {Loaded = false,Debug = false,Current = "Loader",Utilities = {}}
 Parvus.Utilities.UI = Parvus.Debug and loadfile("Parvus/Utilities/UI.lua")()
-or loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/ridgeHUN/ridgeHUN-v4/main/UI.lua"))()
+or loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/AlexR32/Parvus/main/Utilities/UI.lua"))()
 Parvus.Utilities.Drawing = Parvus.Debug and loadfile("Parvus/Utilities/Drawing.lua")()
 or loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/AlexR32/Parvus/main/Utilities/Drawing.lua"))()
 Parvus.Utilities.Misc = Parvus.Debug and loadfile("Parvus/Utilities/Misc.lua")()
@@ -41,6 +41,11 @@ Parvus.Games = {
         Name = "Those Who Remain",
         Script = Parvus.Debug and readfile("Parvus/Games/TWR.lua")
         or game:HttpGetAsync("https://raw.githubusercontent.com/AlexR32/Parvus/main/Games/TWR.lua")
+    },
+    ["1586272220"] = {
+        Name = "Steel Titans",
+        Script = Parvus.Debug and readfile("Parvus/Games/ST.lua")
+        or game:HttpGetAsync("https://raw.githubusercontent.com/AlexR32/Parvus/main/Games/ST.lua")
     }
 }
 
@@ -58,7 +63,7 @@ LocalPlayer.OnTeleport:Connect(function(State)
     if State == Enum.TeleportState.Started then
         local QueueOnTeleport = (syn and syn.queue_on_teleport) or queue_on_teleport
         QueueOnTeleport(Parvus.Debug and readfile("Parvus/Loader.lua")
-        or game:HttpGetAsync("https://raw.githubusercontent.com/ridgeHUN/ridgeHUN-v4/main/loader"))
+        or game:HttpGetAsync("https://raw.githubusercontent.com/AlexR32/Parvus/main/Loader.lua"))
     end
 end)
 
@@ -68,7 +73,7 @@ if SupportedGame then
     loadstring(SupportedGame.Script)()
     Parvus.Utilities.UI:Notification({
         Title = "hanoware",
-        Description = Parvus.Current .. " executed, dont get caught",
+        Description = Parvus.Current .. " loaded!",
         Duration = 5
     }) Parvus.Loaded = true
 else
@@ -76,7 +81,7 @@ else
     loadstring(Parvus.Debug and readfile("Parvus/Universal.lua")
     or game:HttpGetAsync("https://raw.githubusercontent.com/ridgeHUN/ridgeHUN-v4/main/Main.lua"))()
     Parvus.Utilities.UI:Notification({
-        Title = "Parvus Hub",
+        Title = "hanoware",
         Description = Parvus.Current .. " loaded!",
         Duration = 5
     }) Parvus.Loaded = true
