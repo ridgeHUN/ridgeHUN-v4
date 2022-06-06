@@ -22,7 +22,7 @@ local Window = Parvus.Utilities.UI:Window({
 		local AimbotSection = AimAssistTab:Section({Name = "Aimbot",Side = "Left"}) do
 			AimbotSection:Toggle({Name = "Enabled",Flag = "Aimbot/Enabled",Value = false})
 			AimbotSection:Toggle({Name = "Visibility Check",Flag = "Aimbot/WallCheck",Value = false})
-			AimbotSection:Toggle({Name = "Dynamic FOV",Flag = "Aimbot/DynamicFoV",Value = false})
+			AimbotSection:Toggle({Name = "Dynamic FoV",Flag = "Aimbot/DynamicFoV",Value = false})
 			AimbotSection:Keybind({Name = "Keybind",Flag = "Aimbot/Keybind",Value = "MouseButton2",Mouse = true,
 				Callback = function(Key,KeyDown) Aimbot = Window.Flags["Aimbot/Enabled"] and KeyDown end})
 			AimbotSection:Slider({Name = "Smoothness",Flag = "Aimbot/Smoothness",Min = 0,Max = 100,Value = 25,Unit = "%"})
@@ -35,24 +35,43 @@ local Window = Parvus.Utilities.UI:Window({
 			AimbotSection:Toggle({Name = "Enabled",Flag = "Aimbot/Prediction/Enabled",Value = false})
 			AimbotSection:Slider({Name = "Velocity",Flag = "Aimbot/Prediction/Velocity",Min = 100,Max = 5000,Value = 1600})
 		end
-		local AFoVSection = AimAssistTab:Section({Name = "Aimbot FOV Circle",Side = "Left"}) do
+		local AFoVSection = AimAssistTab:Section({Name = "Aimbot FoV Circle",Side = "Left"}) do
 			AFoVSection:Toggle({Name = "Enabled",Flag = "Aimbot/Circle/Enabled",Value = true})
 			AFoVSection:Toggle({Name = "Filled",Flag = "Aimbot/Circle/Filled",Value = false})
 			AFoVSection:Colorpicker({Name = "Color",Flag = "Aimbot/Circle/Color",Value = {1,0.75,1,0.5,false}})
 			AFoVSection:Slider({Name = "NumSides",Flag = "Aimbot/Circle/NumSides",Min = 3,Max = 100,Value = 100})
 			AFoVSection:Slider({Name = "Thickness",Flag = "Aimbot/Circle/Thickness",Min = 1,Max = 10,Value = 1})
 		end
-		local TFoVSection = AimAssistTab:Section({Name = "Trigger FOV Circle",Side = "Left"}) do
+		local TFoVSection = AimAssistTab:Section({Name = "Trigger FoV Circle",Side = "Left"}) do
 			TFoVSection:Toggle({Name = "Enabled",Flag = "Trigger/Circle/Enabled",Value = true})
 			TFoVSection:Toggle({Name = "Filled",Flag = "Trigger/Circle/Filled",Value = false})
 			TFoVSection:Colorpicker({Name = "Color",Flag = "Trigger/Circle/Color",Value = {1,0.25,1,0.5,true}})
 			TFoVSection:Slider({Name = "NumSides",Flag = "Trigger/Circle/NumSides",Min = 3,Max = 100,Value = 100})
 			TFoVSection:Slider({Name = "Thickness",Flag = "Trigger/Circle/Thickness",Min = 1,Max = 10,Value = 1})
 		end
-		local TriggerSection = AimAssistTab:Section({Name = "Triggerbot",Side = "Right"}) do
+		local SilentAimSection = AimAssistTab:Section({Name = "Silent Aim",Side = "Right"}) do
+			SilentAimSection:Toggle({Name = "Enabled",Flag = "SilentAim/Enabled",Value = false})
+			:Keybind({Mouse = true,Flag = "SilentAim/Keybind"})
+			SilentAimSection:Toggle({Name = "Visibility Check",Flag = "SilentAim/WallCheck",Value = false})
+			SilentAimSection:Toggle({Name = "Dynamic FoV",Flag = "SilentAim/DynamicFoV",Value = false})
+			SilentAimSection:Slider({Name = "Hit Chance",Flag = "SilentAim/HitChance",Min = 0,Max = 100,Value = 100,Unit = "%"})
+			SilentAimSection:Slider({Name = "Field of View",Flag = "SilentAim/FieldOfView",Min = 0,Max = 500,Value = 50})
+			SilentAimSection:Dropdown({Name = "Priority",Flag = "SilentAim/Priority",List = {
+				{Name = "Head",Mode = "Toggle",Value = true},
+				{Name = "HumanoidRootPart",Mode = "Toggle"}
+			}})
+		end
+		local SAFoVSection = AimAssistTab:Section({Name = "Silent Aim FoV Circle",Side = "Right"}) do
+			SAFoVSection:Toggle({Name = "Enabled",Flag = "SilentAim/Circle/Enabled",Value = true})
+			SAFoVSection:Toggle({Name = "Filled",Flag = "SilentAim/Circle/Filled",Value = false})
+			SAFoVSection:Colorpicker({Name = "Color",Flag = "SilentAim/Circle/Color",Value = {0.66666668653488,0.75,1,0.5,false}})
+			SAFoVSection:Slider({Name = "NumSides",Flag = "SilentAim/Circle/NumSides",Min = 3,Max = 100,Value = 100})
+			SAFoVSection:Slider({Name = "Thickness",Flag = "SilentAim/Circle/Thickness",Min = 1,Max = 10,Value = 1})
+		end
+		local TriggerSection = AimAssistTab:Section({Name = "Trigger",Side = "Right"}) do
 			TriggerSection:Toggle({Name = "Enabled",Flag = "Trigger/Enabled",Value = false})
 			TriggerSection:Toggle({Name = "Visibility Check",Flag = "Trigger/WallCheck",Value = true})
-			TriggerSection:Toggle({Name = "Dynamic FOV",Flag = "Trigger/DynamicFoV",Value = false})
+			TriggerSection:Toggle({Name = "Dynamic FoV",Flag = "Trigger/DynamicFoV",Value = false})
 			TriggerSection:Slider({Name = "Field of View",Flag = "Trigger/FieldOfView",Min = 0,Max = 500,Value = 10})
 			TriggerSection:Slider({Name = "Delay",Flag = "Trigger/Delay",Min = 0,Max = 1,Precise = 2,Value = 0.15})
 			TriggerSection:Slider({Name = "Hold Time",Flag = "Trigger/HoldTime",Min = 0,Max = 1,Precise = 2,Value = 0})
@@ -123,29 +142,6 @@ local Window = Parvus.Utilities.UI:Window({
 			HighlightSection:Slider({Name = "Transparency",Flag = "ESP/Player/Highlight/Transparency",Min = 0,Max = 1,Precise = 2,Value = 0})
 			HighlightSection:Colorpicker({Name = "Outline Color",Flag = "ESP/Player/Highlight/OutlineColor",Value = {1,1,0,0.5,false}})
 		end
-		
-		local MiscTab = Window:Tab({Name = "Miscellaneous"}) do -- was here
-			local MiscSection = MiscTab:Section({Name = "Quick Execution",Side = "Left"}) do
-				MiscSection:Button({Name = "Infinite Yield",Side = "Left",Callback = function()
-					loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-				end})
-
-				local GunModsSection = MiscTab:Section({Name = "Gun Modifications",Side = "Left"}) do
-					GunModsSection:Button({Name = "Unlimited Ammo",Side = "Left",Callback = function()
-						local Player = game:GetService("Players").LocalPlayer
-						local mag = require(game:GetService("ReplicatedStorage").Modules.Gun).get(Player.Character:FindFirstChildOfClass("Tool"));
-
-						--mag.Clip = mag.Clip + 300
-						mag.MagazineBullets = mag.MagazineBullets + 999
-					end})
-
-					local VehicleModsSection = MiscTab:Section({Name = "Vehicle Modifications",Side = "Right"}) do
-						VehicleModsSection:Button({Name = "Vehicle Acceleration",Side = "Left",Callback = function()
-							for i, v in pairs(workspace.CarStorage:GetChildren()) do
-								v.Cosmetics.Essentials.SpeedScalar.Value = 9999999999999999999999999999999
-							end
-						end})
-
         --[[local LightingSection = VisualsTab:Section({Name = "Lighting",Side = "Right"}) do
             LightingSection:Toggle({Name = "Enabled",Flag = "Lighting/Enabled",Value = false})
             LightingSection:Colorpicker({Name = "Ambient",Flag = "Lighting/Ambient",Value = {1,0,0,0,false}})
@@ -186,6 +182,9 @@ local Window = Parvus.Utilities.UI:Window({
 			Callback = Parvus.Utilities.Misc.ReJoin})
 		SettingsTab:Button({Name = "Server Hop",Side = "Left",
 			Callback = Parvus.Utilities.Misc.ServerHop})
+		SettingsTab:Button({Name = "Join Discord Server",Side = "Left",
+			Callback = Parvus.Utilities.Misc.JoinDiscord})
+		:ToolTip("Join for support, updates and more!")
 		local BackgroundSection = SettingsTab:Section({Name = "Background",Side = "Right"}) do
 			BackgroundSection:Dropdown({Name = "Image",Flag = "Background/Image",List = {
 				{Name = "Legacy",Mode = "Button",Callback = function()
@@ -240,9 +239,14 @@ local Window = Parvus.Utilities.UI:Window({
 			CrosshairSection:Slider({Name = "Gap",Flag = "Mouse/Crosshair/Gap",Min = 0,Max = 10,Value = 2})
 		end
 		local CreditsSection = SettingsTab:Section({Name = "Credits",Side = "Right"}) do
-			CreditsSection:Label({Text = "hanoware is fake..."})
+			CreditsSection:Label({Text = "This script was made by AlexR32#0157"})
 			CreditsSection:Divider()
-			CreditsSection:Label({Text = "hano has no involvement stg"})
+			CreditsSection:Label({Text = "Thanks to Jan for awesome Background Patterns"})
+			CreditsSection:Label({Text = "Thanks to Infinite Yield Team for Server Hop and Rejoin"})
+			CreditsSection:Label({Text = "Thanks to Blissful for Offscreen Arrows"})
+			CreditsSection:Label({Text = "Thanks to coasts for Universal ESP"})
+			CreditsSection:Label({Text = "Thanks to el3tric for Bracket V2"})
+			CreditsSection:Label({Text = "❤️ ❤️ ❤️ ❤️"})
 		end
 	end
 end
@@ -416,13 +420,13 @@ RunService.Heartbeat:Connect(function()
 				Enabled = Window.Flags["Aimbot/Prediction/Enabled"],
 				Velocity = Window.Flags["Aimbot/Prediction/Velocity"]
 			},
-			Sensitivity = Window.Flags["Aimbot/Smoothness"] / 100
+			Sensitivity = Window.Flags["Aimbot/Smoothness"] / 200 -- was 100
 		})
 	end
 
 	if Window.Flags["UI/Watermark"] then
 		Window.Watermark:SetTitle(string.format(
-			"Parvus Hub    %s    %i FPS    %i MS",
+			"hanoware    %s    %i FPS    %i MS",
 			os.date("%X"),GetFPS(),math.round(Ping:GetValue())
 			))
 	end
